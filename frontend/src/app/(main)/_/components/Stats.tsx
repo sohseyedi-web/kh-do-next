@@ -5,7 +5,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay } from "swiper/modules";
 
-// data
 const stats = [
   { label: "نفر در دوربین ثبت نام کردند", value: 9750 },
   { label: "نفر از دوربین خرید کردند", value: 100 },
