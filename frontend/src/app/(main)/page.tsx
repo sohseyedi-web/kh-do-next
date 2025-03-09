@@ -1,6 +1,7 @@
 import { RiArrowLeftSLine } from "react-icons/ri";
 import Link from "next/link";
 import HeaderLayout from "./_/components/HeaderLayout";
+import Stats from "./_/components/Stats";
 
 function HomePage() {
   return (
@@ -22,6 +23,7 @@ function HomePage() {
           <RiArrowLeftSLine size={28} />
         </Link>
       </section>
+      <Stats/>
     </>
   );
 }
