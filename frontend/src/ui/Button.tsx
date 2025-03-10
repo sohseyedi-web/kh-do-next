@@ -1,5 +1,6 @@
 import { ClassValue } from "clsx";
 import cn from "@/utils/cn";
+import Loading from "./Loading";
 
 type ButtonTypes = {
   loading?: boolean;
@@ -28,7 +29,7 @@ const Button = ({
         className
       )}
     >
-      {loading ? "...." : title}
+      {loading ? <Loading /> : title}
     </button>
   );
 };
