@@ -1,10 +1,10 @@
-const users = require("./data/db.users.json");
-const { UserModel } = require("./app/models/user");
 const Application = require("./app/server");
+const { CategoryModel } = require("./app/models/category");
+const categories = require("./data/db.category.json");
 
 (async () => {
   new Application();
-  await UserModel.insertMany(users);
+  await CategoryModel.insertMany(categories);
 })()
   .then(() => {
     console.log("DATA INSERTED SUCCESSFULLY.");
