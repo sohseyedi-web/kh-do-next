@@ -2,6 +2,7 @@ import { RiArrowLeftSLine } from "react-icons/ri";
 import Link from "next/link";
 import HeaderLayout from "./_/components/HeaderLayout";
 import Stats from "./_/components/Stats";
+import FAQ from "./_/components/FaQLayout";
 
 function HomePage() {
   return (
@@ -24,6 +25,7 @@ function HomePage() {
         </Link>
       </section>
       <Stats />
+      <FAQ/>
     </>
   );
 }
