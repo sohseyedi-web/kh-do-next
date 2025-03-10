@@ -4,8 +4,8 @@ import vazirFont from "@/constants/localFonts";
 import "@/styles/globals.css";
 
 export const metadata = {
-  title: "بلاگ / صفحه اصلی",
-  description: "کیولاین برای ساخت پرسشنامه فرم و نظرسنجی آنلاین",
+  title: "دوربین / صفحه اصلی",
+  description: "دوربین فروشگاه آنلاین برای دوربین های حفاظتی",
 };
 
 export default function RootLayout({
