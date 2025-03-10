@@ -22,11 +22,11 @@ const UserAuthBtn = () => {
   return (
     <button
       onClick={onHandleRouter}
-      aria-label={user?.isActive ? "صفحه پروفایل شما" : "ورود به دوربین"}
+      aria-label={user?.username ? "صفحه پروفایل شما" : "ورود به دوربین"}
       className={buttonClasses}
     >
       <span className="md:block hidden">
-        {user?.isActive ? user?.name : "ورود به دوربین"}
+        {user?.username ? user?.username : "ورود به دوربین"}
       </span>
       <RiUserLine size={25} className="md:hidden block" />
     </button>
