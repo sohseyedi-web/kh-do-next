@@ -52,10 +52,10 @@ const UserAuthBtn = () => {
         aria-label={user?.username ? "صفحه پروفایل شما" : "ورود به دوربین"}
         className={`
           ${isLoading ? "blur-sm opacity-70" : "opacity-100 blur-0"}
-          ${user?._id ? "border-2" : "border"}
-          md:w-[150px] w-[42px] h-[42px] rounded-xl border-[#e6e7ee]
-          flex items-center justify-center hover:bg-gray-50 transition-all
-          duration-300 text-[#292a33] font-medium relative
+          ${user?._id ? " bg-teal-500 text-white" : " bg-white text-[#292a33]"}
+          md:w-[150px] w-[42px] h-[42px] border rounded-xl border-zinc-100
+          flex items-center justify-center hover:bg-teal-600 transition-all
+          duration-300  font-medium relative
         `}
       >
         <span className="md:block hidden">
@@ -66,14 +66,14 @@ const UserAuthBtn = () => {
 
       {isDropdownOpen && user?._id && (
         <div
-          className="absolute md:right-0 -right-28 bg-white top-12 w-[150px] border border-[#e6e7ee] rounded-xl z-50 transition-all
+          className="absolute md:right-0 -right-28 bg-gray-100 top-12 w-[150px] border border-zinc-100 rounded-xl z-50 transition-all
           duration-300"
         >
           <ul>
             <li>
               <button
                 onClick={() => router.push("/panel")}
-                className="block w-full px-4 py-2 text-[#292a33] hover:bg-gray-100 text-right"
+                className="block w-full px-4 py-2 text-[#292a33] hover:bg-gray-200 text-right"
               >
                 پنل کاربری
               </button>
@@ -82,7 +82,7 @@ const UserAuthBtn = () => {
             <li>
               <button
                 onClick={handleLogout}
-                className="block w-full px-4 py-2 text-red-500 hover:bg-gray-100 text-right"
+                className="block w-full px-4 py-2 text-red-500 hover:bg-gray-200 text-right"
               >
                 {isPending ? "..." : " خروج از حساب"}
               </button>
