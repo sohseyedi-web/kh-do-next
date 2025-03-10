@@ -2,6 +2,7 @@ import { Toaster } from "react-hot-toast";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import vazirFont from "@/constants/localFonts";
 import "@/styles/globals.css";
+import FooterLayout from "./_/components/FooterLayout";
 
 export const metadata = {
   title: "دوربین / صفحه اصلی",
@@ -22,6 +23,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <Toaster />
           {children}
+          <FooterLayout/>
         </ReactQueryProvider>
       </body>
     </html>
