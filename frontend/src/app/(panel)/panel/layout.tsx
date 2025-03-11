@@ -2,6 +2,8 @@ import { Toaster } from "react-hot-toast";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import vazirFont from "@/constants/localFonts";
 import "@/styles/globals.css";
+import Sidebar from "../_/components/Sidebar";
+import Navbar from "../_/components/Navbar";
 
 export const metadata = {
   title: "پنل کاربری",
@@ -21,7 +23,13 @@ export default function RootLayout({
       >
         <ReactQueryProvider>
           <Toaster />
-          {children}
+          <section className="flex container mx-auto">
+            <Sidebar />
+            <div className="flex-1">
+              <Navbar />
+              <div className="py-5 lg:px-7 px-4">{children}</div>
+            </div>
+          </section>
         </ReactQueryProvider>
       </body>
     </html>
