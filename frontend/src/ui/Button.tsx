@@ -1,13 +1,14 @@
 import { ClassValue } from "clsx";
 import cn from "@/utils/cn";
 import Loading from "./Loading";
+import { ReactNode } from "react";
 
 type ButtonTypes = {
   loading?: boolean;
-  title: string;
+  title: ReactNode;
   onClick?: () => void;
   className: ClassValue;
-  type?: "submit";
+  type?: "submit" | 'button';
   disabled: boolean;
 };
 
