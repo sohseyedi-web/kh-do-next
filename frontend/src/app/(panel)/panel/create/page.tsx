@@ -3,10 +3,9 @@ import { Controller, FieldValues, useForm } from "react-hook-form";
 import Button from "@/ui/Button";
 import InputField from "@/ui/InputField";
 import SelectField from "@/ui/SelectField";
-import Image from "next/image";
 import { useState } from "react";
-import { RiCloseLine } from "react-icons/ri";
 import FileUploadField from "@/ui/FileInputField";
+import useCategories from "@/hooks/useCategory";
 
 const CreateBlog = () => {
   const {
@@ -18,6 +17,7 @@ const CreateBlog = () => {
   } = useForm<FieldValues>();
 
   const [coverImageUrl, setCoverImageUrl] = useState<string | null>(null);
+  const { transformedCategories } = useCategories();
 
   const onSubmit = async (values: FieldValues) => {
     console.log(values);
@@ -66,12 +66,7 @@ const CreateBlog = () => {
         register={register}
         errors={errors}
         validationSchema={{ required: "دسته بندی مشخص نشده" }}
-        options={[
-          {
-            value: "string",
-            label: "ali",
-          },
-        ]}
+        options={transformedCategories}
       />
       <Controller
         control={control}
