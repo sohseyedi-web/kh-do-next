@@ -1,8 +1,13 @@
 import Link from "next/link";
 import React from "react";
 import Blog from "./Blog";
+import { fetchLatestPosts } from "@/services/data";
+import { BlogTypes } from "@/types";
 
-const LatesBlog = () => {
+const LatesBlog = async() => {
+
+  const blogs = await fetchLatestPosts()
+
   return (
     <>
       <header className="flex items-center justify-between mb-3">
@@ -14,9 +19,9 @@ const LatesBlog = () => {
         </Link>
       </header>
       <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 lg:gap-6 md:gap-4 gap-1">
-        <Blog />
-        <Blog />
-        <Blog />
+        {blogs.map((blog : BlogTypes) => (
+          <Blog key={blog._id} blog={blog}/>
+        ))}
       </div>
     </>
   );
