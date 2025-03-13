@@ -6,6 +6,8 @@ import SelectField from "@/ui/SelectField";
 import { useState } from "react";
 import FileUploadField from "@/ui/FileInputField";
 import useCategories from "@/hooks/useCategory";
+import { useCreatePost } from "@/hooks/posts/usePost";
+import { useRouter } from "next/navigation";
 
 const CreateBlog = () => {
   const {
@@ -13,14 +15,24 @@ const CreateBlog = () => {
     formState: { errors },
     handleSubmit,
     control,
-    setValue,
   } = useForm<FieldValues>();
 
   const [coverImageUrl, setCoverImageUrl] = useState<string | null>(null);
-  const { transformedCategories } = useCategories();
+  const { createPost, isCreating } = useCreatePost();
+  const { categories } = useCategories();
+  const router = useRouter();
 
   const onSubmit = async (values: FieldValues) => {
-    console.log(values);
+    const formData = new FormData();
+
+    for (const key in values) {
+      formData.append(key, values[key]);
+    }
+    createPost(formData, {
+      onSuccess: () => {
+        router.push("/panel");
+      },
+    });
   };
 
   return (
@@ -66,7 +78,7 @@ const CreateBlog = () => {
         register={register}
         errors={errors}
         validationSchema={{ required: "دسته بندی مشخص نشده" }}
-        options={transformedCategories}
+        options={categories}
       />
       <Controller
         control={control}
@@ -99,7 +111,8 @@ const CreateBlog = () => {
       </div>
       <Button
         title="ارسال بلاگ"
-        disabled={false}
+        disabled={isCreating}
+        loading={isCreating}
         className={`md:text-lg transition-colors text-white hover:bg-teal-400 bg-teal-500 lg:col-span-2 w-full`}
       />
     </form>
