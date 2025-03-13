@@ -8,19 +8,15 @@ type CategoryType = {
   englishTitle: string;
   description: string;
   slug: string;
-  icon: string;
 };
 
 export default function useCategories() {
-  const { data, isLoading } = useQuery<{ data: CategoryType[] }>({
+  const { data, isLoading } = useQuery({
     queryKey: ["categories"],
-    queryFn: async () => {
-      const response = await api.get(GET_CATEGORY);
-      return response.data;
-    },
+    queryFn: () => api.get(GET_CATEGORY),
   });
 
-  const rawCategories: CategoryType[] = data?.data || [];
+  const rawCategories: CategoryType[] = data?.data?.data?.categories || [];
 
   const categories = rawCategories?.map((item) => ({
     label: item.title,
