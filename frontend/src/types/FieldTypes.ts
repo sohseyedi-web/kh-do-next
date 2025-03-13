@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
 export type ValidationSchemaTypes = {
@@ -21,5 +22,18 @@ export type InputFieldTypes = {
   errors: FieldErrors<FieldValues>;
   validationSchema?: ValidationSchemaTypes;
   value?: string;
-  onChange?: React.ChangeEventHandler;
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  long?: boolean;
+};
+
+export type SelectFieldTypes = {
+  label: string;
+  name: string;
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
+  validationSchema?: ValidationSchemaTypes;
+  options: {
+    value: string;
+    label: string;
+  }[];
 };
