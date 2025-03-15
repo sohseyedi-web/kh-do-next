@@ -2,7 +2,7 @@
 import { useState } from "react";
 import CategoryList from "./CategoryList";
 import ModalWrapper from "@/components/ModalWrapper";
-import Button from "@/ui/Button";
+import CategoryForm from "./_/components/CategoryForm";
 
 export default function Categories() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,9 +20,9 @@ export default function Categories() {
         <ModalWrapper
           onClose={() => setIsOpen(false)}
           isOpen={isOpen}
-          title={"ایجاد دسته بندی"}
+          title={"دسته بندی جدید"}
         >
-          soheil
+          <CategoryForm onClose={() => setIsOpen(false)} />
         </ModalWrapper>
       </header>
       <hr className="bg-zinc-700 my-3" />
