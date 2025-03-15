@@ -73,7 +73,7 @@ const UserAuthBtn = () => {
             <li>
               <button
                 onClick={() => router.push("/panel")}
-                className="block w-full px-4 py-2 text-[#292a33] hover:bg-gray-200 text-right"
+                className="block w-full px-4 rounded-t-xl py-2 text-[#292a33] hover:bg-gray-200 text-right"
               >
                 پنل کاربری
               </button>
@@ -82,7 +82,7 @@ const UserAuthBtn = () => {
             <li>
               <button
                 onClick={handleLogout}
-                className="block w-full px-4 py-2 text-red-500 hover:bg-gray-200 text-right"
+                className="block w-full px-4 rounded-b-xl py-2 text-red-500 hover:bg-gray-200 text-right"
               >
                 {isPending ? "..." : " خروج از حساب"}
               </button>
