@@ -1,5 +1,6 @@
 import { BlogTypes } from "@/types";
 import toLocaleDate from "@/utils/toLocalDate";
+import truncateText from "@/utils/truncate";
 import Link from "next/link";
 import { TiArrowLeftThick } from "react-icons/ti";
 
@@ -15,7 +16,9 @@ const Blog = ({ blog }: { blog: BlogTypes }) => {
         </div>
       </div>
       <div className="mt-5 space-y-4">
-        <p className="break-words lg:text-base text-sm">{blog.text}</p>
+        <p className="break-words lg:text-base text-sm">
+          {truncateText(blog.text, 20)}
+        </p>
         <div>
           تاریخ ایجاد :{" "}
           <span className="font-semibold text-teal-500 lg:text-base text-sm">
