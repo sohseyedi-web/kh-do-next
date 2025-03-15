@@ -1,26 +1,20 @@
 "use server";
 
-import { toStringCookies } from "@/utils/toStringCookies";
-import { cookies } from "next/headers";
+import api from "./http";
 import { getAllPostsApi } from "./postService";
-import { getAllUsersApi } from "./authService";
+import { GET_CATEGORY } from "./urls";
 
 export async function fetchCardData() {
-  const cookieStore = cookies();
-  const options = toStringCookies(cookieStore as any);
   try {
-    const data = await Promise.all([
-      getAllUsersApi(options),
-      getAllPostsApi(options),
+    const [postData, categoryData] = await Promise.all([
+      getAllPostsApi("sort=latest"),
+      api.get(GET_CATEGORY),
     ]);
 
-    const numberOfUsers = Number(data[0].users.length ?? "0");
-    const numberOfPosts = Number(data[1].posts.length ?? "0");
+    const numOfPosts = postData?.posts?.length ?? 0;
+    const numOfCategories = categoryData?.data?.data?.categories?.length ?? 0;
 
-    return {
-      numberOfPosts,
-      numberOfUsers,
-    };
+    return { numOfPosts, numOfCategories };
   } catch (error: any) {
     console.error("خطا", error.response.data.message);
     throw new Error("خطا در بارگذاری اطلاعات");
