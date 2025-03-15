@@ -4,7 +4,8 @@ import { useDetailUser } from "@/hooks/users/useGetUser";
 import { CustomNavlink } from "@/ui/CustomNavlink";
 import * as HiIcon from "react-icons/hi2";
 import { IoDocumentsOutline } from "react-icons/io5";
-import { TbUserSquareRounded } from "react-icons/tb";
+import { TbUserSquareRounded, TbCategory2 } from "react-icons/tb";
+
 
 
 const Sidebar = () => {
@@ -13,7 +14,7 @@ const Sidebar = () => {
   return (
     <SidebarLayout>
       <CustomNavlink to={"/panel/me"}>
-        <TbUserSquareRounded size={26}/>
+        <TbUserSquareRounded size={26} />
         <h6>{user?.username}</h6>
       </CustomNavlink>
       <CustomNavlink to={"/panel"}>
@@ -31,6 +32,10 @@ const Sidebar = () => {
       <CustomNavlink to={"/panel/users"}>
         <HiIcon.HiOutlineUserGroup size={26} />
         <h6>لیست کاربران</h6>
+      </CustomNavlink>
+      <CustomNavlink to={"/panel/categories"}>
+        <TbCategory2 size={26} />
+        <h6>دسته بندی ها</h6>
       </CustomNavlink>
     </SidebarLayout>
   );
