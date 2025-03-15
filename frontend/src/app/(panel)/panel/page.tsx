@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import StatsWrapper from "../_/components/stats/StatsWrapper";
 import LatesBlog from "../_/components/blogs/LatesBlog";
+import StatsWrapper from "../_/components/stats/StatsWrapper";
 
 export default async function PanelHome() {
   return (
