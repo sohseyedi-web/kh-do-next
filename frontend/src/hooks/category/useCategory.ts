@@ -30,12 +30,12 @@ export function useCategories() {
     value: item.englishTitle,
   }));
 
-  return { isLoading, categories, transformedCategories };
+  return { isLoading, categories, transformedCategories, rawCategories };
 }
 export function useCreateCategory() {
   const queryClient = useQueryClient();
   const { mutateAsync: addCategories, isPending } = useMutation({
-    mutationFn: () => api.post(CREATE_CATEGORY),
+    mutationFn: (values: FieldValues) => api.post(CREATE_CATEGORY, values),
     onSuccess: (data: FieldValues) => {
       toast.success(data.message);
       queryClient.invalidateQueries({ queryKey: ["categories"] });
