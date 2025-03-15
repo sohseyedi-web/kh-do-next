@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import ModalWrapper from "@/components/ModalWrapper";
 import { useState } from "react";
 
 interface FileUploadFieldProps {
@@ -58,24 +59,17 @@ function FileUploadField({
         </span>
       )}
 
-      {/* ✅ مودال نمایش تصویر */}
-      {isModalOpen && fileUrl && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-4 rounded-lg shadow-lg relative w-[90%] max-w-md">
-            <button
-              onClick={() => setIsModalOpen(false)}
-              className="absolute top-2 right-2 text-red-500 text-xl"
-            >
-              ✖
-            </button>
-            <img
-              src={fileUrl}
-              alt="Uploaded preview"
-              className="w-full h-auto rounded-md"
-            />
-          </div>
-        </div>
-      )}
+      <ModalWrapper
+        title="مشاهده عکس"
+        isOpen={Boolean(isModalOpen && fileUrl)}
+        onClose={() => setIsModalOpen(false)}
+      >
+        <img
+          src={fileUrl ?? undefined}
+          alt="Uploaded preview"
+          className="w-full h-auto object-cover"
+        />
+      </ModalWrapper>
     </div>
   );
 }
