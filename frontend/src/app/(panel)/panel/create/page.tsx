@@ -5,7 +5,7 @@ import InputField from "@/ui/InputField";
 import SelectField from "@/ui/SelectField";
 import { useState } from "react";
 import FileUploadField from "@/ui/FileInputField";
-import useCategories from "@/hooks/useCategory";
+import { useCategories } from "@/hooks/category/useCategory";
 import { useCreatePost } from "@/hooks/posts/usePost";
 import { useRouter } from "next/navigation";
 
