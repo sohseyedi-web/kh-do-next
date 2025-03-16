@@ -1,7 +1,8 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
-import { USER_PROFILE, LOG_OUT } from "@/services/urls";
+import { USER_PROFILE, LOG_OUT, UPDATE_USER } from "@/services/urls";
 import api from "@/services/http";
+import { FieldValues } from "react-hook-form";
 
 export const useDetailUser = () => {
   const { data, isLoading } = useQuery({
@@ -28,4 +29,24 @@ export const useLogOut = () => {
   });
 
   return { logOut, isPending };
+};
+
+export const useUpdateUser = () => {
+  const queryClient = useQueryClient();
+  const { mutateAsync: updateUserProfile, isPending: isUpdating } = useMutation(
+    {
+      mutationFn: (data: FieldValues) => api.patch(UPDATE_USER, data),
+      onSuccess: (data: FieldValues) => {
+        toast.success(data.message);
+        queryClient.invalidateQueries({
+          queryKey: ["user"],
+        });
+      },
+      onError: (err: any) => {
+        toast.error(err?.response?.data?.message);
+      },
+    }
+  );
+
+  return { updateUserProfile, isUpdating };
 };
