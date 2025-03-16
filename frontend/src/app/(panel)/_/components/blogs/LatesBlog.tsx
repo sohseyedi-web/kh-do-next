@@ -1,8 +1,7 @@
 import Link from "next/link";
-import React from "react";
-import Blog from "./Blog";
 import { fetchLatestPosts } from "@/services/data";
 import { BlogTypes } from "@/types";
+import Blog from "@/components/BlogBox";
 
 const LatesBlog = async() => {
 
