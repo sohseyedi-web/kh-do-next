@@ -1,4 +1,3 @@
-import Loading from "@/ui/Loading";
 import InputField from "@/ui/InputField";
 import { FieldValues, useForm } from "react-hook-form";
 import Button from "@/ui/Button";
@@ -19,26 +18,13 @@ type CateogoryType = {
 };
 
 const CategoryForm = ({ onClose, categoryToEdit }: CateogoryType) => {
-  let isUpdating = false;
-  const { _id: categoryId } = categoryToEdit as CategoryItemType;
-  const { englishTitle, title, description } =
-    categoryToEdit as CategoryItemType;
-  const isCategorySession = Boolean(categoryId);
-  let editValues = {};
-
-  if (isCategorySession) {
-    editValues = {
-      englishTitle,
-      title,
-      description,
-    };
-  }
+  const { _id: categoryId } = (categoryToEdit as CategoryItemType) || "";
 
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({ defaultValues: editValues });
+  } = useForm();
   const { isPending, addCategories } = useCreateCategory();
 
   const onSubmit = async (values: FieldValues) => {
@@ -83,10 +69,10 @@ const CategoryForm = ({ onClose, categoryToEdit }: CateogoryType) => {
         }}
       />
       <Button
-        className={isCategorySession ? "btn btn-primary" : "bg-red-600"}
-        loading={isCategorySession ? isUpdating : isPending}
-        title={isCategorySession ? "ویرایش دسته بندی" : "ثبت دسته بندی"}
-        disabled={isCategorySession ? isUpdating : isPending}
+        title={"ثبت دسته بندی"}
+        className={"bg-teal-500 hover:bg-teal-600 text-white text-lg "}
+        loading={isPending}
+        disabled={isPending}
       />
     </FormWrapper>
   );
