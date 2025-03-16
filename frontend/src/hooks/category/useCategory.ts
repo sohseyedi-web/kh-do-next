@@ -36,8 +36,8 @@ export function useCreateCategory() {
   const queryClient = useQueryClient();
   const { mutateAsync: addCategories, isPending } = useMutation({
     mutationFn: (values: FieldValues) => api.post(CREATE_CATEGORY, values),
-    onSuccess: (data: FieldValues) => {
-      toast.success(data.message);
+    onSuccess: () => {
+      toast.success("دسته بندی با موفقیت ایجاد شد");
       queryClient.invalidateQueries({ queryKey: ["categories"] });
     },
     onError: (error: any) => {
