@@ -36,7 +36,7 @@ const ModalWrapper = ({
 
           <motion.div
             className={cn(
-              "relative bg-zinc-200 border border-zinc-500 rounded-xl p-4 shadow-lg lg:w-[33%] md:w-[60%] w-[90%]",
+              "relative bg-zinc-100 border border-zinc-400 rounded-xl p-4 shadow-lg lg:w-[33%] md:w-[60%] w-[90%]",
               className
             )}
             initial={{ opacity: 0, scale: 0.8 }}
