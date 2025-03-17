@@ -1,8 +1,8 @@
 import { getPostById } from "@/services/postService";
-import BlogIdHeader from "../_/components/BlogIdHeader";
 import Image from "next/image";
 import toLocaleDate from "@/utils/toLocalDate";
 import { toPersianNumbers } from "@/utils/toPersianNumbers";
+import Header from "./_/components/Header";
 
 export default async function BlogId({
   params,
@@ -16,7 +16,7 @@ export default async function BlogId({
 
   return (
     <>
-      <BlogIdHeader title={blog?.title} />
+      <Header title={blog?.title} />
       <hr className="bg-zinc-700 my-3" />
       <section className="lg:w-[50%] w-[95%] space-y-4" key={blog?._id}>
         <div className="flex gap-x-3 lg:flex-row flex-col lg:space-y-0 space-y-2">
