@@ -16,7 +16,7 @@ function SelectField({
       </label>
       <select
         className="mb-2 text-zinc-800 w-full cursor-pointer border focus:border-zinc-300 focus:shadow focus:bg-white md:h-[55px] h-[45px] px-3 transition-all duration-300 rounded-2xl outline-none"
-        {...register(name, validationSchema)}
+        {...(register && register(name, validationSchema))}
         id={name}
         name={name}
       >
