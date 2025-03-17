@@ -1,11 +1,12 @@
 "use client";
 import ModalWrapper from "@/components/ModalWrapper";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { FaEye } from "react-icons/fa6";
 
 interface FileUploadFieldProps {
   label: string;
   name: string;
-  errors: any;
+  errors: Record<string, { message?: string }>;
   placeholder?: string;
   onChange?: (file: File | null) => void;
 }
@@ -23,12 +24,25 @@ function FileUploadField({
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0] || null;
-    setFileName(file ? file.name : null);
     if (file) {
-      setFileUrl(URL.createObjectURL(file));
+      const url = URL.createObjectURL(file);
+      setFileName(file.name);
+      setFileUrl(url);
+      if (onChange) onChange(file);
+    } else {
+      setFileName(null);
+      setFileUrl(null);
+      if (onChange) onChange(null);
     }
-    if (onChange) onChange(file);
   };
+
+  useEffect(() => {
+    return () => {
+      if (fileUrl) {
+        URL.revokeObjectURL(fileUrl);
+      }
+    };
+  }, [fileUrl]);
 
   return (
     <div className="w-full relative">
@@ -36,15 +50,30 @@ function FileUploadField({
         {label}
       </label>
       <label
-        htmlFor={fileUrl ? undefined : name}
+        htmlFor={name}
         className="w-full cursor-pointer placeholder:text-zinc-500 mb-2 text-zinc-800 border focus:border-zinc-300 focus:shadow focus:bg-white md:h-[55px] h-[45px] px-3 flex items-center justify-between transition-all duration-300 rounded-2xl outline-none"
-        onClick={() => fileUrl && setIsModalOpen(true)}
       >
         <span className="text-zinc-500">
-          {fileUrl ? "مشاهده" : placeholder}
+          {fileUrl ? (
+            <span
+              className="text-blue-500 font-semibold cursor-pointer"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsModalOpen(true);
+              }}
+            >
+              مشاهده
+            </span>
+          ) : (
+            placeholder
+          )}
         </span>
         <span className="text-blue-500 font-semibold">
-          {fileUrl ? "👁️" : "انتخاب فایل"}
+          {fileUrl ? (
+            <FaEye size={20} className="text-zinc-800" />
+          ) : (
+            "انتخاب فایل"
+          )}
         </span>
       </label>
       <input
@@ -53,6 +82,7 @@ function FileUploadField({
         className="hidden"
         onChange={handleFileChange}
       />
+
       {errors[name]?.message && (
         <span className="text-red-500 font-semibold">
           {errors[name]?.message}
@@ -61,14 +91,16 @@ function FileUploadField({
 
       <ModalWrapper
         title="مشاهده عکس"
-        isOpen={Boolean(isModalOpen && fileUrl)}
+        isOpen={isModalOpen && Boolean(fileUrl)}
         onClose={() => setIsModalOpen(false)}
       >
-        <img
-          src={fileUrl ?? undefined}
-          alt="Uploaded preview"
-          className="w-full h-auto object-cover"
-        />
+        {fileUrl && (
+          <img
+            src={fileUrl}
+            alt="Uploaded preview"
+            className="w-full h-auto object-cover"
+          />
+        )}
       </ModalWrapper>
     </div>
   );
