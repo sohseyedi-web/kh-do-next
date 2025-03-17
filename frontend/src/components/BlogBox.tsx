@@ -10,7 +10,7 @@ const Blog = ({ blog }: { blog: BlogTypes }) => {
       <div className="flex items-center justify-between">
         <h5 className="lg:text-lg font-semibold">{blog.title}</h5>
         <div className="flex items-center gap-x-3">
-          <Link href={`/profile/blog/${blog.slug}`}>
+          <Link href={`/panel/blogs/${blog._id}`}>
             <TiArrowLeftThick className="text-teal-500 lg:size-7 size-5" />
           </Link>
         </div>
