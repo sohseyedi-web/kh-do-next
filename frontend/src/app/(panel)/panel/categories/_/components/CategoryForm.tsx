@@ -61,6 +61,7 @@ const CategoryForm = ({ onClose, categoryToEdit }: CateogoryType) => {
       <InputField
         label={"عنوان انگلیسی"}
         name="englishTitle"
+        dir="ltr"
         errors={errors}
         placeholder={"مثال : design"}
         register={register}
