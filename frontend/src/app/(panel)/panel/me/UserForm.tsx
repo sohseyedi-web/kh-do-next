@@ -7,16 +7,23 @@ import { useDetailUser, useUpdateUser } from "@/hooks/users/useGetUser";
 import Button from "@/ui/Button";
 import FormWrapper from "@/components/FormWrapper";
 
-const UserForm = () => {
-  let userDetails = {};
-  const { user, isLoading } = useDetailUser();
+interface UserDetails {
+  username?: string;
+  email?: string;
+  biography?: string;
+}
 
+const UserForm = () => {
+  const { user, isLoading } = useDetailUser();
   const { updateUserProfile, isUpdating } = useUpdateUser();
-  userDetails = {
-    username: user?.username,
-    email: user?.email,
-    biography: user?.biography,
-  };
+
+  const userDetails: UserDetails = user
+    ? {
+        username: user.username,
+        email: user.email,
+        biography: user.biography,
+      }
+    : {};
 
   const {
     register,
@@ -30,7 +37,7 @@ const UserForm = () => {
     await updateUserProfile(values);
   };
 
-  if (isLoading && user) return <Loading />;
+  if (isLoading) return <Loading />;
 
   return (
     <FormWrapper
@@ -55,7 +62,6 @@ const UserForm = () => {
           required: "ایمیل ضرروی است",
         }}
       />
-
       <div className="lg:col-span-2">
         <InputField
           label={"اطلاعات بیشتر"}
@@ -70,7 +76,7 @@ const UserForm = () => {
         disabled={isUpdating}
         title={"ویرایش اطلاعات"}
         loading={isUpdating}
-        className="md:text-lg transition-colors text-white hover:bg-purple-600 bg-purple-500 lg:col-span-2 w-full"
+        className="action-button"
       />
     </FormWrapper>
   );
