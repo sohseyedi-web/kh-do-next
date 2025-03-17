@@ -36,16 +36,16 @@ export interface InputFieldTypes {
   dir?: "rtl" | "ltr";
 }
 
-export interface SelectField<T = string> {
+export interface SelectFieldTypes {
   label: string;
   name: string;
-  value?: T;
+  value?: string;
   onChange?: React.ChangeEventHandler<HTMLSelectElement>;
   register?: UseFormRegister<FieldValues>;
   errors?: FieldErrors<FieldValues>;
   validationSchema?: ValidationSchema;
   options: {
-    value: T;
+    value: string;
     label: string;
   }[];
 }
