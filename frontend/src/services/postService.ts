@@ -8,7 +8,7 @@ export async function getAllPostsApi(queries: any, options = {}) {
 }
 
 export async function getPostById(id: string) {
-  return api.get(`/post/${id}`).then(({ data }) => data);
+  return api.get(`/post/${id}`).then(({ data }) => data.data);
 }
 
 export async function createPostApi(data: FieldValues) {
