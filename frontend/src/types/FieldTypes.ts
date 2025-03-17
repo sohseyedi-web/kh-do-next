@@ -1,7 +1,6 @@
-import { ChangeEvent } from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
-export type ValidationSchemaTypes = {
+export type ValidationSchema = {
   required?: string;
   minLength?: {
     value: number;
@@ -13,27 +12,40 @@ export type ValidationSchemaTypes = {
   };
 };
 
-export type InputFieldTypes = {
+export type ReactHookFormItem = Record<string, any>;
+
+export interface FileUploadFieldTypes {
+  label: string;
+  name: string;
+  errors: Record<string, { message?: string }>;
+  placeholder?: string;
+  onChange?: (file: File | null) => void;
+}
+
+export interface InputFieldTypes {
   label: string;
   name: string;
   type?: string;
   placeholder?: string;
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors<FieldValues>;
-  validationSchema?: ValidationSchemaTypes;
+  validationSchema?: ValidationSchema;
   value?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
   long?: boolean;
-};
+  dir?: "rtl" | "ltr";
+}
 
-export type SelectFieldTypes = {
+export interface SelectField<T = string> {
   label: string;
   name: string;
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors<FieldValues>;
-  validationSchema?: ValidationSchemaTypes;
+  value?: T;
+  onChange?: React.ChangeEventHandler<HTMLSelectElement>;
+  register?: UseFormRegister<FieldValues>;
+  errors?: FieldErrors<FieldValues>;
+  validationSchema?: ValidationSchema;
   options: {
-    value: string;
+    value: T;
     label: string;
   }[];
-};
+}
