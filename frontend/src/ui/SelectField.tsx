@@ -22,7 +22,7 @@ function SelectField({
       >
         {options.map((option) => (
           <option
-            className="bg-red-300"
+            className="bg-zinc-300"
             key={option.value}
             value={option.value}
           >
