@@ -62,7 +62,7 @@ const UserForm = () => {
           required: "ایمیل ضرروی است",
         }}
       />
-      <div className="lg:col-span-2">
+      <div className="lg:col-span-2 col-span-1">
         <InputField
           label={"اطلاعات بیشتر"}
           name={"biography"}
@@ -76,7 +76,7 @@ const UserForm = () => {
         disabled={isUpdating}
         title={"ویرایش اطلاعات"}
         loading={isUpdating}
-        className="action-button"
+        className="bg-purple-600 hover:bg-purple-500 text-lg text-white lg:col-span-2 col-span-1"
       />
     </FormWrapper>
   );
