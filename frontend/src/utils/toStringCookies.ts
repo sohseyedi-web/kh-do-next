@@ -1,11 +1,8 @@
 import { RequestCookies } from "next/dist/compiled/@edge-runtime/cookies";
-
-interface Cookies {
-  getAll: () => Promise<{ name: string; value: string }[]>;
-}
+import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 
 export const toStringCookies = async (
-  cookies: RequestCookies
+  cookies: RequestCookies | ReadonlyRequestCookies
 ): Promise<string> => {
   let strCookie = "";
   const allCookies = await cookies.getAll();
