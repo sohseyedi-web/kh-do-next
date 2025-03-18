@@ -12,7 +12,7 @@ export type ValidationSchema = {
   };
 };
 
-export type ReactHookFormItem = Record<string, any>;
+export type ReactHookFormItem = Record<string, string>;
 
 export interface FileUploadFieldTypes {
   label: string;
