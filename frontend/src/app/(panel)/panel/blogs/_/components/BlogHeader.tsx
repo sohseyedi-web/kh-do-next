@@ -1,9 +1,5 @@
 "use client";
-import {
-  PiCaretUpDownBold,
-  PiListBulletsBold,
-  PiGridFourBold,
-} from "react-icons/pi";
+import { PiCaretUpDownBold, PiListBulletsBold } from "react-icons/pi";
 
 const BlogHeader = () => {
   return (
