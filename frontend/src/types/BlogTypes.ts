@@ -2,7 +2,10 @@ export interface BlogTypes {
   title: string;
   _id: string;
   slug: string;
-  category: string;
+  category: {
+    title: string;
+    _id: string;
+  };
   type?: "free" | "premium";
   briefText: string;
   text: string;
@@ -15,4 +18,5 @@ export interface BlogTypes {
   related?: string[];
   comments?: string[];
   createdAt: Date;
+  coverImageUrl?: string;
 }

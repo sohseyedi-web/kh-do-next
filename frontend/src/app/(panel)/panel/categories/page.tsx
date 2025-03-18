@@ -10,7 +10,7 @@ export default function Categories() {
   return (
     <section>
       <header className="flex items-center justify-between">
-        <h5 className="text-xl font-semibold">دسته بندی ها</h5>
+        <h5 className="lg:text-2xl text-xl font-semibold">دسته بندی ها</h5>
         <span
           onClick={() => setIsOpen(true)}
           className="text-sm text-teal-500 font-semibold cursor-pointer"

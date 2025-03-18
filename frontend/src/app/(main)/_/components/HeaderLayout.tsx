@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import ToggleSwitch from "@/ui/ToggleSwitch";
 import UserAuthBtn from "./UserAuthBtn";
 

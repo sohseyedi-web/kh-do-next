@@ -1,14 +1,8 @@
 "use client";
 import ModalWrapper from "@/components/ModalWrapper";
+import { FileUploadFieldTypes } from "@/types";
 import { useState } from "react";
-
-interface FileUploadFieldProps {
-  label: string;
-  name: string;
-  errors: any;
-  placeholder?: string;
-  onChange?: (file: File | null) => void;
-}
+import { FaEye } from "react-icons/fa6";
 
 function FileUploadField({
   label,
@@ -16,7 +10,7 @@ function FileUploadField({
   errors,
   placeholder = "یک عکس انتخاب کنید",
   onChange,
-}: FileUploadFieldProps) {
+}: FileUploadFieldTypes) {
   const [fileName, setFileName] = useState<string | null>(null);
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,7 +38,11 @@ function FileUploadField({
           {fileUrl ? "مشاهده" : placeholder}
         </span>
         <span className="text-blue-500 font-semibold">
-          {fileUrl ? "👁️" : "انتخاب فایل"}
+          {fileUrl ? (
+            <FaEye size={20} className="cursor-pointer" />
+          ) : (
+            "انتخاب فایل"
+          )}
         </span>
       </label>
       <input

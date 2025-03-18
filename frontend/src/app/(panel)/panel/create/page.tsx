@@ -93,7 +93,7 @@ const CreateBlog = () => {
               onChange(file);
               setCoverImageUrl(file ? URL.createObjectURL(file) : "");
             }}
-            errors={errors}
+            errors={errors as Record<string, { message?: string }>}
           />
         )}
       />
