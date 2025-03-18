@@ -1,9 +1,11 @@
 "use client";
+import { BlogTypes } from "@/types";
 import Button from "@/ui/Button";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CiBookmark, CiHeart } from "react-icons/ci";
 
-const BlogBox = ({ blog }: { blog: any }) => {
+const BlogBox = ({ blog }: { blog: BlogTypes }) => {
   const router = useRouter();
 
   return (
@@ -11,11 +13,14 @@ const BlogBox = ({ blog }: { blog: any }) => {
       key={blog._id}
       className="shadow-sm cursor-pointer border border-zinc-200 rounded-xl duration-300 hover:shadow-xl p-3"
     >
-      <img
-        src={blog?.coverImageUrl}
-        alt={blog?.title}
-        className="object-cover rounded-xl w-full h-[150px]"
-      />
+      <div className="relative w-full h-[150px]">
+        <Image
+          src={blog?.coverImageUrl as string}
+          alt={blog?.title}
+          fill
+          className="object-cover rounded-xl"
+        />
+      </div>
       <div className="py-3">
         <span className="text-zinc-500 font-semibold text-sm">
           {blog?.category?.title}
