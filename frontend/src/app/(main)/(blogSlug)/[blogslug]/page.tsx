@@ -31,12 +31,12 @@ async function BlogDetail({ params }: { params: Promise<any> }) {
         </div>
       </div>
       <hr className="bg-zinc-700 my-3" />
-      <div className="relative w-full h-[400px] mb-5">
+      <div className="relative w-full h-[300px] mb-5">
         <Image
           src={post.coverImageUrl}
           alt={post.title}
           fill
-          className="object-cover rounded"
+          className="object-cover rounded-xl"
         />
       </div>
 
