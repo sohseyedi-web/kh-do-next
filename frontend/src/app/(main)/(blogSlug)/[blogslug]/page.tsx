@@ -5,9 +5,10 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 
 export const dynamic = "force-dynamic";
 
-async function BlogDetail({ params }: { params: Record<string, string> }) {
+async function BlogDetail({ params }: { params: Promise<any> }) {
+  const resolvedParams = await params;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/post/slug/${params.blogslug}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/post/slug/${resolvedParams.blogslug}`,
     { cache: "no-store" }
   );
   const {

@@ -4,12 +4,8 @@ import toLocaleDate from "@/utils/toLocalDate";
 import { toPersianNumbers } from "@/utils/toPersianNumbers";
 import Header from "./_/components/Header";
 
-export default async function BlogId({
-  params,
-}: {
-  params: Record<string, string>;
-}) {
-  const { blogId } = params;
+export default async function BlogId({ params }: { params: Promise<any> }) {
+  const { blogId } = await params;
   const data = await getPostById(blogId);
 
   const blog = data?.post || {};

@@ -4,7 +4,7 @@ import BlogLists from "./_/components/BlogLists";
 import { Suspense } from "react";
 
 interface BlogPageProps {
-  searchParams: Record<string, string>;
+  searchParams: Promise<any>;
 }
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
